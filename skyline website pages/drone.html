@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drone Security Solutions — Skylink</title>
+  <meta name="description" content="Aerial security: real-time drone surveillance integrated with the Skylink platform. In partnership with RPAS Consulting." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- PROGRESS -->
+<div class="pbar" id="pbar"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <!-- REPLACE LOGO FILE HERE — loading screen logo -->
+  <img
+    src="images/skylink-logo.png"
+    alt="Skylink Innovations"
+    class="loader-logo-img"
+  />
+  <div class="loader-track"><div class="loader-fill" id="lfill"></div></div>
+  <div class="loader-lbl">Initializing System</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <!-- CHANGE NAVBAR LOGO HERE -->
+    <img
+      src="images/submark.png"
+      alt="Skylink Innovations"
+      class="logo-img"
+    />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" >Home</a></li>
+    <li><a href="services.html" >Services</a></li>
+    <li><a href="drone.html" class="active">Drone Security</a></li>
+    <li><a href="industrial.html" >Industrial</a></li>
+    <li><a href="contact.html" >Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get Started</a>
+  <div class="ham" id="ham"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html"      onclick="closeMob()">Home</a>
+  <a href="services.html"   onclick="closeMob()">Services</a>
+  <a href="drone.html"      onclick="closeMob()">Drone Security</a>
+  <a href="industrial.html" onclick="closeMob()">Industrial</a>
+  <a href="contact.html"    onclick="closeMob()">Contact</a>
+</div>
+
+
+<!-- PAGE HERO — Drone Security -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="sec-label rv">Aerial Security</div>
+    <h1 class="rv d1">Drone Security<br><em>Solutions.</em></h1>
+    <p class="rv d2">Skylink extends protection beyond the perimeter with intelligent drone surveillance — giving you a complete aerial view of your property and surroundings in real time. Where traditional cameras have blind spots, drones don't.</p>
+    <div class="breadcrumb rv d3"><a href="index.html">Home</a><span>·</span>Drone Security</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DRONE SECURITY — Full content
+============================================================ -->
+<section id="drone">
+  <div class="wrap">
+
+    <div class="drone-inner">
+
+      <!-- ─────────────────────────────────────────────────
+           LEFT COLUMN — Heading, intro copy, partner credit
+      ───────────────────────────────────────────────────── -->
+      <div class="drone-text">
+
+        <div class="sec-label rv">Aerial Security</div>
+
+        <h2 class="rv d1">
+          Drone Security<br>
+          <em>Solutions</em>
+        </h2>
+
+        <p class="rv d2">
+          Skylink extends protection beyond the walls of your property with intelligent drone surveillance — giving you a complete aerial view of your estate, perimeter, and surroundings in real time. Where traditional cameras have blind spots, drones don't.
+        </p>
+
+        <p class="rv d2">
+          Our drone security offering integrates directly with the Skylink platform. Alerts, footage, and deployment commands are all managed from the same interface you already use — no separate app, no added complexity.
+        </p>
+
+        <div class="drone-div rv d3"></div>
+
+        <!-- Partner credit — links to RPAS Consulting -->
+        <div class="rv d3">
+          <p style="font-family:var(--fm);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--silv);margin-bottom:16px;">
+            In partnership with
+          </p>
+          <!--
+            PARTNER LINK
+            Update href if the URL changes: https://rpas.co.za/
+          -->
+          <a
+            href="https://rpas.co.za/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="drone-partner"
+          >
+            <!-- REPLACE PARTNER LOGO HERE
+                 To swap: update the src below with your new logo path.
+                 Example: src="images/rpas-consulting-logo.png"
+                 To resize: adjust height in .drone-partner-logo CSS above.
+            -->
+            <img
+              src="images/RPAS_Consulting_Logo.png"
+              alt="RPAS Consulting"
+              class="drone-partner-logo"
+            />
+
+            <div class="drone-partner-copy">
+              <div class="drone-partner-sub">Certified Aerial Operations Partner</div>
+            </div>
+          </a>
+
+          <p style="font-size:13px;font-weight:300;color:var(--silv);line-height:1.7;margin-top:20px;max-width:380px;">
+            We proudly collaborate with
+            <a href="https://rpas.co.za/" target="_blank" rel="noopener noreferrer"
+               style="color:var(--plat);border-bottom:1px solid rgba(200,214,224,.25);padding-bottom:1px;transition:color .2s,border-color .2s;"
+               onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,.5)'"
+               onmouseout="this.style.color='var(--plat)';this.style.borderColor='rgba(200,214,224,.25)'">
+              RPAS Consulting
+            </a>
+            — a trusted leader in remotely piloted aircraft systems, bringing certified aerial intelligence to every Skylink deployment.
+          </p>
+        </div>
+
+      </div><!-- /drone-text -->
+
+      <!-- ─────────────────────────────────────────────────
+           RIGHT COLUMN — Four benefit cards
+           Update title and desc text inside each card as needed
+      ───────────────────────────────────────────────────── -->
+      <div class="drone-benefits rv d1">
+
+        <!-- Benefit 1 -->
+        <div class="drone-benefit">
+          <svg class="drone-benefit-icon" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="8" stroke="#00D4FF" stroke-width="1" fill="rgba(0,212,255,.06)"/>
+            <circle cx="22" cy="22" r="14" stroke="#00D4FF" stroke-width=".7" stroke-dasharray="2 3" fill="none" opacity=".5"/>
+            <circle cx="22" cy="22" r="19" stroke="#00D4FF" stroke-width=".6" stroke-dasharray="1 4" fill="none" opacity=".25"/>
+            <circle cx="22" cy="22" r="3" fill="#00D4FF"/>
+          </svg>
+          <div class="drone-benefit-body">
+            <div class="drone-benefit-title">Real-Time Aerial Monitoring</div>
+            <p class="drone-benefit-desc">Live drone feeds stream directly into your Skylink dashboard, giving you an unobstructed bird's-eye view of your property — day or night, on demand.</p>
+          </div>
+        </div>
+
+        <!-- Benefit 2 -->
+        <div class="drone-benefit">
+          <svg class="drone-benefit-icon" viewBox="0 0 44 44" fill="none">
+            <path d="M22 6L38 14V24C38 33 31 40 22 43C13 40 6 33 6 24V14L22 6Z" stroke="#00D4FF" stroke-width="1" fill="rgba(0,212,255,.04)"/>
+            <path d="M16 23l4 4 8-9" stroke="#00D4FF" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="drone-benefit-body">
+            <div class="drone-benefit-title">Wide Perimeter Coverage</div>
+            <p class="drone-benefit-desc">A single drone patrol covers kilometres of perimeter that would require dozens of fixed cameras — eliminating blind spots and reducing infrastructure costs.</p>
+          </div>
+        </div>
+
+        <!-- Benefit 3 -->
+        <div class="drone-benefit">
+          <svg class="drone-benefit-icon" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="16" stroke="#00D4FF" stroke-width="1" fill="none"/>
+            <path d="M22 12v10l6 4" stroke="#00D4FF" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="22" y1="6" x2="22" y2="3" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="22" y1="41" x2="22" y2="38" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="6" y1="22" x2="3" y2="22" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="41" y1="22" x2="38" y2="22" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <div class="drone-benefit-body">
+            <div class="drone-benefit-title">Rapid Incident Response</div>
+            <p class="drone-benefit-desc">When an alert is triggered, a drone can be deployed within seconds — reaching the scene and transmitting live footage before any ground team arrives.</p>
+          </div>
+        </div>
+
+        <!-- Benefit 4 -->
+        <div class="drone-benefit">
+          <svg class="drone-benefit-icon" viewBox="0 0 44 44" fill="none">
+            <rect x="8" y="18" width="28" height="18" rx="2" stroke="#00D4FF" stroke-width="1" fill="none"/>
+            <path d="M14 18v-5a8 8 0 0116 0v5" stroke="#00D4FF" stroke-width="1" stroke-linecap="round" fill="none"/>
+            <circle cx="22" cy="27" r="3.5" stroke="#00D4FF" stroke-width="1" fill="rgba(0,212,255,.12)"/>
+            <line x1="22" y1="30.5" x2="22" y2="33" stroke="#00D4FF" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+          <div class="drone-benefit-body">
+            <div class="drone-benefit-title">Scalable &amp; Cost-Effective</div>
+            <p class="drone-benefit-desc">Replace or supplement expensive fixed infrastructure with flexible drone patrols — scalable to your property size with no permanent installation required.</p>
+          </div>
+        </div>
+
+      </div><!-- /drone-benefits -->
+
+    </div><!-- /drone-inner -->
+  </div>
+</section>
+<!-- DRONE SECURITY SECTION END -->
+
+<!-- ============================================================
+     CTA STRIP — bottom of every sub-page
+============================================================ -->
+<section class="cta-strip">
+  <div class="wrap">
+    <div class="cta-strip-in">
+      <div class="cta-strip-text rv">
+        <h3>Ready to put Skylink<br>to work for you?</h3>
+        <p>Tell us about your project and our team will craft a tailored deployment plan — typically within 24 hours.</p>
+      </div>
+      <div class="cta-actions rv d1">
+        <a href="contact.html" class="btn-p">Start a Conversation</a>
+        <a href="contact.html" class="btn-g">Visit contact page</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="ft-in">
+      <div>
+        <!-- REPLACE LOGO FILE HERE — footer logo
+             To use a file: src="images/skylink-logo.png"
+        -->
+        <img
+          src="images/skylink-logo.png"
+          alt="Skylink Innovations"
+          class="ft-logo-img"
+        />
+        <div class="ft-tag">Intelligent Living</div>
+        <p class="ft-desc">Cloud-native home automation and security for South Africa's most discerning homeowners. One platform. Total control.</p>
+      </div>
+      <div>
+        <div class="ft-ct">Platform</div>
+        <ul class="ft-links">
+          <li><a href="services.html">Perimeter Security</a></li>
+          <li><a href="services.html">Adaptive Lighting</a></li>
+          <li><a href="services.html">Remote Control</a></li>
+          <li><a href="services.html">Cloud Monitoring</a></li>
+          <li><a href="services.html">Access Management</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">Company</div>
+        <ul class="ft-links">
+          <li><a href="index.html#about">About Skylink</a></li>
+          <li><a href="industrial.html">Industrial Solutions</a></li>
+          <li><a href="drone.html">Drone Security</a></li>
+          <li><a href="index.html#testimonials">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">Legal</div>
+        <ul class="ft-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">POPIA Compliance</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <div class="ft-copy">© 2025 Skylink Technologies (Pty) Ltd. All rights reserved.</div>
+      <div class="ft-soc">
+        <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="10" x2="8" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="7.5" r="1" fill="currentColor"/><path d="M12 10v7M12 13c0-1.7 1-3 3-3s3 1.3 3 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M4 20L20 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

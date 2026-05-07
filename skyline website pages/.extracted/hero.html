@@ -1,0 +1,60 @@
+<section id="hero">
+
+  <!-- ============================================================
+       HERO VIDEO BACKGROUND
+       TO SWAP THE VIDEO: replace the src attribute on the <source>
+       tag below with your new video file path or data URI.
+       Example: <source src="videos/hero.mp4" type="video/mp4">
+
+       PERFORMANCE TIPS:
+       · Compress to ~2–4 MB for fast load (use HandBrake or FFmpeg)
+       · Ideal resolution: 1920×1080 or 1280×720
+       · Keep duration under 20s for seamless looping
+  ============================================================ -->
+  <video
+    class="h-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    aria-hidden="true"
+  >
+    <!-- CHANGE HERO VIDEO HERE -->
+    <!-- To swap the video: update the src below with your new file path or data URI.
+         Example: <source src="/videos/new-hero.mp4" type="video/mp4">
+    -->
+    <source src="videos/hero-video.mp4" type="video/mp4">
+    <!-- Fallback: browser hides the video element if unsupported -->
+  </video>
+
+  <div class="h-grid"></div>
+  <svg class="h-rings" viewBox="0 0 640 640" fill="none">
+    <circle cx="320" cy="320" r="110" stroke-width=".8"/>
+    <circle cx="320" cy="320" r="190" stroke-width=".6"/>
+    <circle cx="320" cy="320" r="270" stroke-width=".5"/>
+    <circle cx="320" cy="320" r="310" stroke-width=".4"/>
+    <circle cx="320" cy="320" r="28" fill="rgba(0,212,255,.12)"/>
+    <circle cx="320" cy="320" r="10" fill="rgba(0,212,255,.4)"/>
+    <line x1="320" y1="255" x2="320" y2="235" stroke="rgba(0,212,255,.25)" stroke-width="1"/>
+    <line x1="320" y1="385" x2="320" y2="405" stroke="rgba(0,212,255,.25)" stroke-width="1"/>
+    <line x1="255" y1="320" x2="235" y2="320" stroke="rgba(0,212,255,.25)" stroke-width="1"/>
+    <line x1="385" y1="320" x2="405" y2="320" stroke="rgba(0,212,255,.25)" stroke-width="1"/>
+  </svg>
+  <div class="h-ov"></div>
+  <div class="wrap">
+    <div class="h-content">
+      <div class="h-eye">Cloud-Native Home Automation &amp; Security</div>
+      <h1 class="h-hl">Your home.<br><em>Intelligent.</em><br>Effortless.</h1>
+      <p class="h-sub">Skylink connects every system in your home — security, lighting, access, and climate — into one seamless cloud-powered platform. Managed entirely from your phone.</p>
+      <div class="h-acts">
+        <a href="contact.html" class="btn-p">Request a Demo</a>
+        <a href="services.html" class="btn-g">Explore Platform</a>
+      </div>
+    </div>
+  </div>
+  <div class="h-scroll">
+    <span>Scroll</span>
+    <div class="h-sline"></div>
+  </div>
+</section>

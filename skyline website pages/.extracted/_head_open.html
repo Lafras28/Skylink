@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>__TITLE__</title>
+  <meta name="description" content="__DESC__" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- PROGRESS -->
+<div class="pbar" id="pbar"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <!-- REPLACE LOGO FILE HERE — loading screen logo -->
+  <img
+    src="images/skylink-logo.png"
+    alt="Skylink Innovations"
+    class="loader-logo-img"
+  />
+  <div class="loader-track"><div class="loader-fill" id="lfill"></div></div>
+  <div class="loader-lbl">Initializing System</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <!-- CHANGE NAVBAR LOGO HERE -->
+    <img
+      src="images/submark.png"
+      alt="Skylink Innovations"
+      class="logo-img"
+    />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" __HOME_ACTIVE__>Home</a></li>
+    <li><a href="services.html" __SERVICES_ACTIVE__>Services</a></li>
+    <li><a href="drone.html" __DRONE_ACTIVE__>Drone Security</a></li>
+    <li><a href="industrial.html" __INDUSTRIAL_ACTIVE__>Industrial</a></li>
+    <li><a href="contact.html" __CONTACT_ACTIVE__>Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get Started</a>
+  <div class="ham" id="ham"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html"      onclick="closeMob()">Home</a>
+  <a href="services.html"   onclick="closeMob()">Services</a>
+  <a href="drone.html"      onclick="closeMob()">Drone Security</a>
+  <a href="industrial.html" onclick="closeMob()">Industrial</a>
+  <a href="contact.html"    onclick="closeMob()">Contact</a>
+</div>
+
