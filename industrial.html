@@ -1,1 +1,328 @@
-<!-- Placeholder for industrial.html. Will copy content from old structure. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Industrial Solutions — Skylink</title>
+  <meta name="description" content="Skylink Industrial: cloud-native security and monitoring for warehouses, logistics yards, factories, distribution networks and critical infrastructure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- PROGRESS -->
+<div class="pbar" id="pbar"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <!-- REPLACE LOGO FILE HERE — loading screen logo -->
+  <img
+    src="images/skylink-logo.png"
+    alt="Skylink Innovations"
+    class="loader-logo-img"
+  />
+  <div class="loader-track"><div class="loader-fill" id="lfill"></div></div>
+  <div class="loader-lbl">Initializing System</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <!-- CHANGE NAVBAR LOGO HERE -->
+    <img
+      src="images/submark.png"
+      alt="Skylink Innovations"
+      class="logo-img"
+    />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" >Home</a></li>
+    <li><a href="services.html" >Services</a></li>
+    <li><a href="drone.html" >Drone Security</a></li>
+    <li><a href="industrial.html" class="active">Industrial</a></li>
+    <li><a href="contact.html" >Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get Started</a>
+  <div class="ham" id="ham"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html"      onclick="closeMob()">Home</a>
+  <a href="services.html"   onclick="closeMob()">Services</a>
+  <a href="drone.html"      onclick="closeMob()">Drone Security</a>
+  <a href="industrial.html" onclick="closeMob()">Industrial</a>
+  <a href="contact.html"    onclick="closeMob()">Contact</a>
+</div>
+
+
+<!-- PAGE HERO — Industrial -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="sec-label rv">Industrial Solutions</div>
+    <h1 class="rv d1">Skylink at <em>industrial</em><br>scale.</h1>
+    <p class="rv d2">The same cloud-native intelligence that protects high-end residences now secures the warehouses, logistics yards, factories, and distribution networks that power South African industry. Skylink Industrial brings unified site-wide visibility, automated access control, and 24/7 cloud monitoring to operations that simply cannot afford downtime.</p>
+    <div class="breadcrumb rv d3"><a href="index.html">Home</a><span>·</span>Industrial</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INDUSTRIAL — Use cases + capabilities + drone tie-in
+     Brand-new content positioning Skylink for industrial sites.
+============================================================ -->
+<section id="industrial">
+  <div class="wrap">
+
+    <div class="sum-head-row">
+      <div class="sum-head-text">
+        <div class="sec-label rv">Use Cases</div>
+        <h2 class="rv d1" style="font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.15;letter-spacing:.03em;">Built for the<br>operations that <em style="font-style:italic;color:var(--cyan)">never stop.</em></h2>
+      </div>
+      <p class="rv d2" style="font-size:15px;font-weight:300;line-height:1.85;color:var(--silv);max-width:420px">
+        Skylink Industrial is a single platform that unifies physical security, access control, and 24/7 cloud monitoring across every site you operate — from a single warehouse to a national distribution network.
+      </p>
+    </div>
+
+    <div class="ind-grid">
+
+      <!-- 01 — Warehouses -->
+      <div class="ind-case rv">
+        <div class="ind-num">01</div>
+        <svg class="ind-ico" viewBox="0 0 44 44" fill="none">
+          <path d="M6 18L22 8l16 10v22H6V18Z" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.05)"/>
+          <rect x="14" y="26" width="7" height="14" stroke="#00D4FF" stroke-width="1" fill="none"/>
+          <rect x="23" y="26" width="7" height="14" stroke="#00D4FF" stroke-width="1" fill="none"/>
+          <line x1="6" y1="22" x2="38" y2="22" stroke="#00D4FF" stroke-width=".8" opacity=".5"/>
+        </svg>
+        <h3>Warehouses & Storage</h3>
+        <p>From cold-chain facilities to bulk-goods depots, Skylink delivers full-coverage CCTV, smart access control on every loading bay, and intelligent alerts the moment something deviates from the norm.</p>
+        <ul>
+          <li>Perimeter intrusion detection</li>
+          <li>Zone-based camera networks</li>
+          <li>Loading-bay & gate automation</li>
+          <li>Cold-chain temperature alerts</li>
+        </ul>
+      </div>
+
+      <!-- 02 — Logistics & Distribution -->
+      <div class="ind-case rv d1">
+        <div class="ind-num">02</div>
+        <svg class="ind-ico" viewBox="0 0 44 44" fill="none">
+          <rect x="4" y="18" width="22" height="14" rx="1" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.05)"/>
+          <path d="M26 22h8l4 6v4H26v-10Z" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.04)"/>
+          <circle cx="12" cy="34" r="3" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.1)"/>
+          <circle cx="32" cy="34" r="3" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.1)"/>
+        </svg>
+        <h3>Logistics & Distribution</h3>
+        <p>Yards, depots, and trans-shipment hubs run on tight margins and tight schedules. Skylink secures every gate, tracks every vehicle, and gives operations one live view of the network.</p>
+        <ul>
+          <li>Automated yard & gate control</li>
+          <li>Driver & vehicle access management</li>
+          <li>Multi-site dashboards</li>
+          <li>Real-time incident escalation</li>
+        </ul>
+      </div>
+
+      <!-- 03 — Factories & Manufacturing -->
+      <div class="ind-case rv d2">
+        <div class="ind-num">03</div>
+        <svg class="ind-ico" viewBox="0 0 44 44" fill="none">
+          <path d="M6 38V18l8 5V18l8 5V18l8 5v-7h6v22H6Z" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.05)"/>
+          <line x1="12" y1="34" x2="14" y2="34" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="20" y1="34" x2="22" y2="34" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="28" y1="34" x2="30" y2="34" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <h3>Factories & Manufacturing</h3>
+        <p>Production-floor surveillance, hazard detection, and integrated safety alarms — backed by always-on cloud monitoring that surfaces only what matters to operations and safety teams.</p>
+        <ul>
+          <li>Production-floor surveillance</li>
+          <li>Hazard & safety-zone alerts</li>
+          <li>Equipment-status integration</li>
+          <li>Shift & visitor access logs</li>
+        </ul>
+      </div>
+
+      <!-- 04 — Critical Infrastructure -->
+      <div class="ind-case rv d3">
+        <div class="ind-num">04</div>
+        <svg class="ind-ico" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="14" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.05)"/>
+          <path d="M22 8v6M22 30v6M8 22h6M30 22h6" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="22" cy="22" r="3" fill="#00D4FF"/>
+        </svg>
+        <h3>Critical Infrastructure</h3>
+        <p>Utilities, data centres, and high-value sites where downtime isn't acceptable. Skylink delivers a hardened, redundant command layer with multi-site escalation and full audit trails.</p>
+        <ul>
+          <li>Hardened, redundant architecture</li>
+          <li>Multi-site command centre</li>
+          <li>Tamper & integrity monitoring</li>
+          <li>Full audit & compliance trails</li>
+        </ul>
+      </div>
+
+      <!-- 05 — Construction & Sites -->
+      <div class="ind-case rv">
+        <div class="ind-num">05</div>
+        <svg class="ind-ico" viewBox="0 0 44 44" fill="none">
+          <path d="M22 6l16 12v22h-32V18L22 6Z" stroke="#00D4FF" stroke-width="1" fill="rgba(0,212,255,.04)" opacity=".5"/>
+          <rect x="14" y="22" width="16" height="18" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.08)"/>
+          <line x1="14" y1="30" x2="30" y2="30" stroke="#00D4FF" stroke-width=".8"/>
+          <line x1="22" y1="22" x2="22" y2="40" stroke="#00D4FF" stroke-width=".8"/>
+        </svg>
+        <h3>Construction Sites</h3>
+        <p>Asset and material theft are constant risks on active sites. Skylink deploys rapidly, scales to fenceline length, and breaks down cleanly when the project moves to its next phase.</p>
+        <ul>
+          <li>Rapid-deploy camera & alarm kits</li>
+          <li>Site-wide perimeter alerts</li>
+          <li>Contractor access management</li>
+          <li>Drone patrols (where applicable)</li>
+        </ul>
+      </div>
+
+      <!-- 06 — Estates & Mixed-Use -->
+      <div class="ind-case rv d1">
+        <div class="ind-num">06</div>
+        <svg class="ind-ico" viewBox="0 0 44 44" fill="none">
+          <rect x="6" y="14" width="14" height="26" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.05)"/>
+          <rect x="24" y="20" width="14" height="20" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.05)"/>
+          <line x1="9" y1="20" x2="17" y2="20" stroke="#00D4FF" stroke-width=".8"/>
+          <line x1="9" y1="26" x2="17" y2="26" stroke="#00D4FF" stroke-width=".8"/>
+          <line x1="9" y1="32" x2="17" y2="32" stroke="#00D4FF" stroke-width=".8"/>
+          <line x1="27" y1="26" x2="35" y2="26" stroke="#00D4FF" stroke-width=".8"/>
+          <line x1="27" y1="32" x2="35" y2="32" stroke="#00D4FF" stroke-width=".8"/>
+        </svg>
+        <h3>Estates & Mixed-Use</h3>
+        <p>Lifestyle estates, business parks, and mixed-use developments rely on Skylink to give residents, tenants, and management one consistent, premium platform across every shared system.</p>
+        <ul>
+          <li>Estate-wide access management</li>
+          <li>Common-area surveillance</li>
+          <li>Resident & tenant apps</li>
+          <li>Centralised cloud monitoring</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- CAPABILITIES BAND -->
+    <div class="ind-caps rv">
+      <div class="ind-cap">
+        <div class="n">24/7</div>
+        <div class="l">Cloud Monitoring</div>
+        <div class="d">Always-on monitoring with AI-driven anomaly detection — only the events that matter make it to your team.</div>
+      </div>
+      <div class="ind-cap">
+        <div class="n">Multi-site</div>
+        <div class="l">Unified Dashboard</div>
+        <div class="d">One platform, every site. Standardised across warehouses, factories, and depots regardless of geography.</div>
+      </div>
+      <div class="ind-cap">
+        <div class="n">Open</div>
+        <div class="l">System Integration</div>
+        <div class="d">Integrates with existing CCTV, access, alarm, and ERP systems — protecting prior investment.</div>
+      </div>
+      <div class="ind-cap">
+        <div class="n">SLA</div>
+        <div class="l">Enterprise Support</div>
+        <div class="d">Service-level agreements with rapid-response SLAs and on-site engineering for industrial deployments.</div>
+      </div>
+    </div>
+
+    <!-- DRONE TIE-IN -->
+    <div class="ind-tie rv">
+      <div class="ind-tie-text">
+        <div class="ind-tie-eye">Pairs With</div>
+        <h3>Aerial intelligence for industrial perimeters</h3>
+        <p>Combine Skylink Industrial with our drone security solutions for complete site-wide aerial coverage. Live drone feeds stream into the same dashboard your security team already uses — no extra app, no extra complexity.</p>
+      </div>
+      <a href="drone.html" class="btn-p">Drone Security →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA STRIP — bottom of every sub-page
+============================================================ -->
+<section class="cta-strip">
+  <div class="wrap">
+    <div class="cta-strip-in">
+      <div class="cta-strip-text rv">
+        <h3>Ready to put Skylink<br>to work for you?</h3>
+        <p>Tell us about your project and our team will craft a tailored deployment plan — typically within 24 hours.</p>
+      </div>
+      <div class="cta-actions rv d1">
+        <a href="contact.html" class="btn-p">Start a Conversation</a>
+        <a href="contact.html" class="btn-g">Visit contact page</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="ft-in">
+      <div>
+        <!-- REPLACE LOGO FILE HERE — footer logo
+             To use a file: src="images/skylink-logo.png"
+        -->
+        <img
+          src="images/skylink-logo.png"
+          alt="Skylink Innovations"
+          class="ft-logo-img"
+        />
+        <div class="ft-tag">Intelligent Living</div>
+        <p class="ft-desc">Cloud-native home automation and security for South Africa's most discerning homeowners. One platform. Total control.</p>
+      </div>
+      <div>
+        <div class="ft-ct">Platform</div>
+        <ul class="ft-links">
+          <li><a href="services.html">Perimeter Security</a></li>
+          <li><a href="services.html">Adaptive Lighting</a></li>
+          <li><a href="services.html">Remote Control</a></li>
+          <li><a href="services.html">Cloud Monitoring</a></li>
+          <li><a href="services.html">Access Management</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">Company</div>
+        <ul class="ft-links">
+          <li><a href="index.html#about">About Skylink</a></li>
+          <li><a href="industrial.html">Industrial Solutions</a></li>
+          <li><a href="drone.html">Drone Security</a></li>
+          <li><a href="index.html#testimonials">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">Legal</div>
+        <ul class="ft-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">POPIA Compliance</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <div class="ft-copy">© 2025 Skylink Technologies (Pty) Ltd. All rights reserved.</div>
+      <div class="ft-soc">
+        <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="10" x2="8" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="7.5" r="1" fill="currentColor"/><path d="M12 10v7M12 13c0-1.7 1-3 3-3s3 1.3 3 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M4 20L20 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

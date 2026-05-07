@@ -1,1 +1,667 @@
-<!-- Placeholder for index.html. Will copy content from old structure. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skylink — Intelligent Living</title>
+  <meta name="description" content="Cloud-native home automation, security, and industrial intelligence. One platform. Total control." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- PROGRESS -->
+<div class="pbar" id="pbar"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <!-- REPLACE LOGO FILE HERE — loading screen logo -->
+  <img
+    src="images/skylink-logo.png"
+    alt="Skylink Innovations"
+    class="loader-logo-img"
+  />
+  <div class="loader-track"><div class="loader-fill" id="lfill"></div></div>
+  <div class="loader-lbl">Initializing System</div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <!-- CHANGE NAVBAR LOGO HERE -->
+    <img
+      src="images/submark.png"
+      alt="Skylink Innovations"
+      class="logo-img"
+    />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="services.html" >Services</a></li>
+    <li><a href="drone.html" >Drone Security</a></li>
+    <li><a href="industrial.html" >Industrial</a></li>
+    <li><a href="contact.html" >Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Get Started</a>
+  <div class="ham" id="ham"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html"      onclick="closeMob()">Home</a>
+  <a href="services.html"   onclick="closeMob()">Services</a>
+  <a href="drone.html"      onclick="closeMob()">Drone Security</a>
+  <a href="industrial.html" onclick="closeMob()">Industrial</a>
+  <a href="contact.html"    onclick="closeMob()">Contact</a>
+</div>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="hero">
+
+  <!-- ============================================================
+       HERO VIDEO BACKGROUND
+       TO SWAP THE VIDEO: replace the src attribute on the <source>
+       tag below with your new video file path or data URI.
+       Example: <source src="videos/hero.mp4" type="video/mp4">
+
+       PERFORMANCE TIPS:
+       · Compress to ~2–4 MB for fast load (use HandBrake or FFmpeg)
+       · Ideal resolution: 1920×1080 or 1280×720
+       · Keep duration under 20s for seamless looping
+  ============================================================ -->
+  <video
+    class="h-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    aria-hidden="true"
+  >
+    <!-- CHANGE HERO VIDEO HERE -->
+    <!-- To swap the video: update the src below with your new file path or data URI.
+         Example: <source src="/videos/new-hero.mp4" type="video/mp4">
+    -->
+    <source src="videos/hero-video.mp4" type="video/mp4">
+    <!-- Fallback: browser hides the video element if unsupported -->
+  </video>
+
+  <div class="h-grid"></div>
+  <svg class="h-rings" viewBox="0 0 640 640" fill="none">
+    <circle cx="320" cy="320" r="110" stroke-width=".8"/>
+    <circle cx="320" cy="320" r="190" stroke-width=".6"/>
+    <circle cx="320" cy="320" r="270" stroke-width=".5"/>
+    <circle cx="320" cy="320" r="310" stroke-width=".4"/>
+    <circle cx="320" cy="320" r="28" fill="rgba(0,212,255,.12)"/>
+    <circle cx="320" cy="320" r="10" fill="rgba(0,212,255,.4)"/>
+    <line x1="320" y1="255" x2="320" y2="235" stroke="rgba(0,212,255,.25)" stroke-width="1"/>
+    <line x1="320" y1="385" x2="320" y2="405" stroke="rgba(0,212,255,.25)" stroke-width="1"/>
+    <line x1="255" y1="320" x2="235" y2="320" stroke="rgba(0,212,255,.25)" stroke-width="1"/>
+    <line x1="385" y1="320" x2="405" y2="320" stroke="rgba(0,212,255,.25)" stroke-width="1"/>
+  </svg>
+  <div class="h-ov"></div>
+  <div class="wrap">
+    <div class="h-content">
+      <div class="h-eye">Cloud-Native Home Automation &amp; Security</div>
+      <h1 class="h-hl">Your home.<br><em>Intelligent.</em><br>Effortless.</h1>
+      <p class="h-sub">Skylink connects every system in your home — security, lighting, access, and climate — into one seamless cloud-powered platform. Managed entirely from your phone.</p>
+      <div class="h-acts">
+        <a href="contact.html" class="btn-p">Request a Demo</a>
+        <a href="services.html" class="btn-g">Explore Platform</a>
+      </div>
+    </div>
+  </div>
+  <div class="h-scroll">
+    <span>Scroll</span>
+    <div class="h-sline"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-in">
+      <div class="about-vis rv">
+        <div class="about-acc"></div>
+        <div class="about-card">
+          <svg class="about-ill" viewBox="0 0 400 500" fill="none">
+            <!-- architectural interior line art -->
+            <rect x="40" y="60" width="320" height="380" stroke="rgba(200,214,224,.05)" stroke-width="1" fill="none"/>
+            <line x1="40" y1="380" x2="360" y2="380" stroke="rgba(200,214,224,.07)" stroke-width="1"/>
+            <line x1="200" y1="60" x2="200" y2="380" stroke="rgba(200,214,224,.03)" stroke-width=".5"/>
+            <!-- window -->
+            <rect x="60" y="100" width="100" height="140" rx="1" stroke="rgba(0,212,255,.1)" stroke-width="1" fill="rgba(0,212,255,.025)"/>
+            <line x1="60" y1="170" x2="160" y2="170" stroke="rgba(0,212,255,.06)" stroke-width=".5"/>
+            <line x1="110" y1="100" x2="110" y2="240" stroke="rgba(0,212,255,.06)" stroke-width=".5"/>
+            <!-- light spill -->
+            <ellipse cx="110" cy="170" rx="90" ry="80" fill="rgba(0,212,255,.025)"/>
+            <!-- door -->
+            <rect x="240" y="245" width="90" height="135" rx="1" stroke="rgba(200,214,224,.07)" stroke-width="1" fill="none"/>
+            <circle cx="238" cy="313" r="4" fill="rgba(200,214,224,.12)"/>
+            <!-- ceiling light -->
+            <circle cx="200" cy="78" r="8" fill="rgba(0,212,255,.18)"/>
+            <circle cx="200" cy="78" r="16" stroke="rgba(0,212,255,.08)" stroke-width=".5" fill="none"/>
+            <circle cx="200" cy="78" r="26" stroke="rgba(0,212,255,.05)" stroke-width=".5" fill="none"/>
+            <path d="M186 86 L118 380 L282 380 L214 86Z" fill="rgba(0,212,255,.018)"/>
+            <!-- control panel -->
+            <rect x="308" y="158" width="44" height="72" rx="2" stroke="rgba(0,212,255,.18)" stroke-width=".8" fill="rgba(0,212,255,.025)"/>
+            <rect x="316" y="167" width="28" height="18" rx="1" fill="rgba(0,212,255,.09)"/>
+            <circle cx="330" cy="206" r="6" stroke="rgba(0,212,255,.28)" stroke-width=".8" fill="none"/>
+            <circle cx="330" cy="206" r="2" fill="rgba(0,212,255,.5)"/>
+            <!-- signal lines from panel -->
+            <line x1="308" y1="194" x2="266" y2="194" stroke="rgba(0,212,255,.12)" stroke-width=".5" stroke-dasharray="3 4"/>
+            <line x1="266" y1="194" x2="200" y2="78"  stroke="rgba(0,212,255,.06)" stroke-width=".5" stroke-dasharray="2 5"/>
+            <circle cx="266" cy="194" r="3" fill="rgba(0,212,255,.28)"/>
+            <!-- text label -->
+            <text x="48" y="458" font-family="monospace" font-size="8" fill="rgba(0,212,255,.18)" letter-spacing="1">ZONE A · LIVING</text>
+            <text x="288" y="458" font-family="monospace" font-size="8" fill="rgba(0,212,255,.12)" letter-spacing="1">48m²</text>
+          </svg>
+          <!-- UPDATED STATS START -->
+          <div class="a-stat">
+            <div class="a-stat-num">10+</div>
+            <div class="a-stat-lbl">Integrated Smart Systems</div>
+          </div>
+          <!-- UPDATED STATS END -->
+        </div>
+      </div>
+
+      <div class="about-text">
+        <div class="sec-label rv">Our Story</div>
+        <h2 class="rv d1">Built for those who demand <em>more</em> from their home</h2>
+        <p class="rv d2">Skylink was founded on a single conviction: that a truly intelligent home should require zero compromise between security, comfort, and convenience. We saw a market dominated by fragmented, complicated systems — and built something different.</p>
+        <p class="rv d2">Our cloud-native platform unifies every system under one elegant interface. No outdated dashboards. No complexity. Just total, effortless control — from wherever you are.</p>
+        <div class="a-div rv d3"></div>
+        <!-- UPDATED STATS START -->
+        <div class="a-stats">
+          <div class="a-sm rv d3"><div class="n">AI</div><div class="l">Powered Surveillance</div></div>
+          <div class="a-sm rv d4"><div class="n">24/7</div><div class="l">Remote Monitoring</div></div>
+          <div class="a-sm rv d5"><div class="n">100%</div><div class="l">Cloud-Native Platform</div></div>
+        </div>
+        <!-- UPDATED STATS END -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES — SUMMARY (full breakdown lives on services.html)
+============================================================ -->
+<section id="services">
+  <div class="wrap">
+    <div class="sum-head-row">
+      <div class="sum-head-text">
+        <div class="sec-label rv">Platform Capabilities</div>
+        <h2 class="rv d1" style="font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.15;letter-spacing:.03em;">Everything your<br>home needs, <em style="font-style:italic;color:var(--cyan)">unified.</em></h2>
+      </div>
+      <p class="rv d2" style="font-size:15px;font-weight:300;line-height:1.85;color:var(--silv);max-width:420px">Every Skylink feature is designed to work independently and together — giving you layered intelligence across your entire property from day one.</p>
+    </div>
+
+    <div class="srv-grid">
+      <!-- Highlight 1 — Perimeter Security -->
+      <a href="services.html" class="srv-card rv" style="text-decoration:none">
+        <div class="srv-num">01</div>
+        <svg class="srv-ico" viewBox="0 0 48 48" fill="none">
+          <path d="M24 4L6 11V25C6 34.5 14 42.5 24 46C34 42.5 42 34.5 42 25V11L24 4Z" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.06)"/>
+          <path d="M18 24l4 4 8-8" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Perimeter Security</h3>
+        <p>Real-time intrusion detection, smart camera networks, and instant mobile alerts.</p>
+        <span class="srv-arr">↗</span>
+      </a>
+      <!-- Highlight 2 — Remote Control -->
+      <a href="services.html" class="srv-card rv d1" style="text-decoration:none">
+        <div class="srv-num">02</div>
+        <svg class="srv-ico" viewBox="0 0 48 48" fill="none">
+          <rect x="8" y="12" width="32" height="24" rx="2" stroke="#00D4FF" stroke-width="1.2" fill="none"/>
+          <rect x="14" y="18" width="20" height="12" rx="1" fill="rgba(0,212,255,.08)" stroke="#00D4FF" stroke-width=".6"/>
+          <line x1="24" y1="36" x2="24" y2="42" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="16" y1="42" x2="32" y2="42" stroke="#00D4FF" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        <h3>Remote Control</h3>
+        <p>A single, beautifully designed app puts your entire home at your fingertips — anywhere in the world.</p>
+        <span class="srv-arr">↗</span>
+      </a>
+      <!-- Highlight 3 — Intelligent Automation -->
+      <a href="services.html" class="srv-card rv d2" style="text-decoration:none">
+        <div class="srv-num">03</div>
+        <svg class="srv-ico" viewBox="0 0 48 48" fill="none">
+          <path d="M24 8l6 8h-8l6 8h-8l6 8h-8l6 8" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="36" cy="14" r="6" stroke="#00D4FF" stroke-width=".8" fill="rgba(0,212,255,.06)"/>
+          <text x="34" y="17" font-size="7" fill="#00D4FF" font-family="monospace">AI</text>
+        </svg>
+        <h3>Intelligent Automation</h3>
+        <p>AI-driven automation that learns your patterns. Your home anticipates, secures, and optimises automatically.</p>
+        <span class="srv-arr">↗</span>
+      </a>
+    </div>
+
+    <div class="sum-cta rv">
+      <a href="services.html" class="btn-p">View All Services</a>
+      <a href="services.html" class="btn-g">See full platform breakdown</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STEP INTO INTELLIGENT LIVING — kept on home as required
+============================================================ -->
+<section id="portfolio">
+  <div class="wrap">
+
+    <div class="vs-head">
+      <div class="sec-label rv">Smart Home Features</div>
+      <h2 class="rv d1">Step Into<br>Intelligent Living</h2>
+    </div>
+
+    <!-- REPLACE VIDEO FILES HERE
+         Each <source src="..."> below points to a video file.
+         To swap a video, update the src attribute on that <source> tag.
+         File path format: /videos/video-1.mp4
+         The base64 data URIs below can be replaced with file paths once
+         the /videos/ folder is set up alongside the HTML file.
+    -->
+    <div class="vs-grid">
+
+      <!-- ── VIDEO 1 — Control Your Cameras ─────────────────────────── -->
+      <div class="vs-card rv">
+        <div class="vs-video-wrap">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Control Your Cameras">
+            <!-- REPLACE VIDEO FILES HERE — Video 1: /videos/video-1.mp4 -->
+            <source src="videos/video-1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vs-caption">
+          <div class="vs-title">Control Your Cameras</div>
+          <p class="vs-desc">Monitor your home in real-time from anywhere with smart camera access.</p>
+        </div>
+      </div>
+
+      <!-- ── VIDEO 2 — Control Your Alarm ───────────────────────────── -->
+      <div class="vs-card rv d1">
+        <div class="vs-video-wrap">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Control Your Alarm">
+            <!-- REPLACE VIDEO FILES HERE — Video 2: /videos/video-2.mp4 -->
+            <source src="videos/video-2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vs-caption">
+          <div class="vs-title">Control Your Alarm</div>
+          <p class="vs-desc">Arm and disarm your security system with full remote control.</p>
+        </div>
+      </div>
+
+      <!-- ── VIDEO 3 — Control Your Lights ──────────────────────────── -->
+      <div class="vs-card rv d2">
+        <div class="vs-video-wrap">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Control Your Lights">
+            <!-- REPLACE VIDEO FILES HERE — Video 3: /videos/video-3.mp4 -->
+            <source src="videos/video-3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vs-caption">
+          <div class="vs-title">Control Your Lights</div>
+          <p class="vs-desc">Adjust lighting instantly to match your mood, schedule, or environment.</p>
+        </div>
+      </div>
+
+      <!-- ── VIDEO 4 — Control Your Appliances ──────────────────────── -->
+      <div class="vs-card rv d3">
+        <div class="vs-video-wrap">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Control Your Appliances">
+            <!-- REPLACE VIDEO FILES HERE — Video 4: /videos/video-4.mp4 -->
+            <source src="videos/video-4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="vs-caption">
+          <div class="vs-title">Control Your Appliances</div>
+          <p class="vs-desc">Manage devices like your fan, kettle, and TV with effortless automation.</p>
+        </div>
+      </div>
+
+    </div><!-- /vs-grid -->
+  </div>
+</section>
+<!-- VIDEO SHOWCASE SECTION END -->
+
+<!-- ============================================================
+     DRONE SECURITY — SUMMARY (full version lives on drone.html)
+============================================================ -->
+<section id="drone">
+  <div class="wrap">
+
+    <div class="drone-inner">
+
+      <!-- LEFT — heading, intro, partner credit, CTA -->
+      <div class="drone-text">
+
+        <div class="sec-label rv">Aerial Security</div>
+
+        <h2 class="rv d1">
+          Drone Security<br>
+          <em>Solutions</em>
+        </h2>
+
+        <p class="rv d2">
+          Skylink extends protection beyond the walls of your property with intelligent drone surveillance — a complete aerial view of your estate, perimeter, and surroundings in real time. Where traditional cameras have blind spots, drones don't.
+        </p>
+
+        <div class="drone-div rv d3"></div>
+
+        <!-- Partner credit -->
+        <div class="rv d3">
+          <p style="font-family:var(--fm);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--silv);margin-bottom:16px;">
+            In partnership with
+          </p>
+          <a
+            href="https://rpas.co.za/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="drone-partner"
+          >
+            <img
+              src="images/RPAS_Consulting_Logo.png"
+              alt="RPAS Consulting"
+              class="drone-partner-logo"
+            />
+            <div class="drone-partner-copy">
+              <div class="drone-partner-sub">Certified Aerial Operations Partner</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="sum-cta rv d3" style="margin-top:40px">
+          <a href="drone.html" class="btn-p">Read More</a>
+          <a href="drone.html" class="btn-g">Explore drone capabilities</a>
+        </div>
+
+      </div><!-- /drone-text -->
+
+      <!-- RIGHT — abridged benefits (2 of 4) -->
+      <div class="drone-benefits rv d1">
+
+        <div class="drone-benefit">
+          <svg class="drone-benefit-icon" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="8" stroke="#00D4FF" stroke-width="1" fill="rgba(0,212,255,.06)"/>
+            <circle cx="22" cy="22" r="14" stroke="#00D4FF" stroke-width=".7" stroke-dasharray="2 3" fill="none" opacity=".5"/>
+            <circle cx="22" cy="22" r="19" stroke="#00D4FF" stroke-width=".6" stroke-dasharray="1 4" fill="none" opacity=".25"/>
+            <circle cx="22" cy="22" r="3" fill="#00D4FF"/>
+          </svg>
+          <div class="drone-benefit-body">
+            <div class="drone-benefit-title">Real-Time Aerial Monitoring</div>
+            <p class="drone-benefit-desc">Live drone feeds stream into your Skylink dashboard — an unobstructed bird's-eye view, day or night.</p>
+          </div>
+        </div>
+
+        <div class="drone-benefit">
+          <svg class="drone-benefit-icon" viewBox="0 0 44 44" fill="none">
+            <path d="M22 6L38 14V24C38 33 31 40 22 43C13 40 6 33 6 24V14L22 6Z" stroke="#00D4FF" stroke-width="1" fill="rgba(0,212,255,.04)"/>
+            <path d="M16 23l4 4 8-9" stroke="#00D4FF" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="drone-benefit-body">
+            <div class="drone-benefit-title">Wide Perimeter Coverage</div>
+            <p class="drone-benefit-desc">A single drone patrol covers kilometres of perimeter — eliminating blind spots and reducing fixed-camera infrastructure.</p>
+          </div>
+        </div>
+
+      </div><!-- /drone-benefits -->
+
+    </div><!-- /drone-inner -->
+  </div>
+</section>
+
+<!-- ============================================================
+     INDUSTRIAL — SUMMARY (full version lives on industrial.html)
+     Positions Skylink's expansion beyond residential into
+     warehouses, logistics, and manufacturing environments.
+============================================================ -->
+<section id="industrial">
+  <div class="wrap">
+
+    <div class="sum-head-row">
+      <div class="sum-head-text">
+        <div class="sec-label rv">Industrial Solutions</div>
+        <h2 class="rv d1" style="font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.15;letter-spacing:.03em;">Beyond the home,<br>at <em style="font-style:italic;color:var(--cyan)">industrial scale.</em></h2>
+      </div>
+      <p class="rv d2" style="font-size:15px;font-weight:300;line-height:1.85;color:var(--silv);max-width:420px">
+        The same cloud-native intelligence that protects high-end residences now secures the warehouses, logistics yards, and production floors that keep South African industry moving.
+      </p>
+    </div>
+
+    <div class="ind-grid">
+
+      <!-- Warehouses -->
+      <div class="ind-case rv">
+        <div class="ind-num">01</div>
+        <svg class="ind-ico" viewBox="0 0 44 44" fill="none">
+          <path d="M6 18L22 8l16 10v22H6V18Z" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.05)"/>
+          <rect x="14" y="26" width="7" height="14" stroke="#00D4FF" stroke-width="1" fill="none"/>
+          <rect x="23" y="26" width="7" height="14" stroke="#00D4FF" stroke-width="1" fill="none"/>
+          <line x1="6" y1="22" x2="38" y2="22" stroke="#00D4FF" stroke-width=".8" opacity=".5"/>
+        </svg>
+        <h3>Warehouses</h3>
+        <p>Perimeter monitoring, smart access control, and inventory-zone surveillance for storage facilities of every scale.</p>
+      </div>
+
+      <!-- Logistics -->
+      <div class="ind-case rv d1">
+        <div class="ind-num">02</div>
+        <svg class="ind-ico" viewBox="0 0 44 44" fill="none">
+          <rect x="4" y="18" width="22" height="14" rx="1" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.05)"/>
+          <path d="M26 22h8l4 6v4H26v-10Z" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.04)"/>
+          <circle cx="12" cy="34" r="3" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.1)"/>
+          <circle cx="32" cy="34" r="3" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.1)"/>
+        </svg>
+        <h3>Logistics & Distribution</h3>
+        <p>Yard security, automated gate control, and live fleet visibility — every truck, depot and gate on a single dashboard.</p>
+      </div>
+
+      <!-- Factories -->
+      <div class="ind-case rv d2">
+        <div class="ind-num">03</div>
+        <svg class="ind-ico" viewBox="0 0 44 44" fill="none">
+          <path d="M6 38V18l8 5V18l8 5V18l8 5v-7h6v22H6Z" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.05)"/>
+          <line x1="12" y1="34" x2="14" y2="34" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="20" y1="34" x2="22" y2="34" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="28" y1="34" x2="30" y2="34" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <h3>Factories & Manufacturing</h3>
+        <p>Production-floor surveillance, hazard detection, and 24/7 cloud monitoring of safety-critical equipment.</p>
+      </div>
+
+      <!-- Critical infrastructure -->
+      <div class="ind-case rv d3">
+        <div class="ind-num">04</div>
+        <svg class="ind-ico" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="14" stroke="#00D4FF" stroke-width="1.2" fill="rgba(0,212,255,.05)"/>
+          <path d="M22 8v6M22 30v6M8 22h6M30 22h6" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="22" cy="22" r="3" fill="#00D4FF"/>
+        </svg>
+        <h3>Critical Infrastructure</h3>
+        <p>Multi-site command centres for utilities, data centres, and high-value installations where downtime isn't an option.</p>
+      </div>
+
+    </div>
+
+    <div class="sum-cta rv">
+      <a href="industrial.html" class="btn-p">Read More</a>
+      <a href="industrial.html" class="btn-g">Explore industrial use cases</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+============================================================ -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="tes-head">
+      <div class="sec-label rv" style="justify-content:center">Client Voices</div>
+      <h2 class="rv d1">What our clients say</h2>
+    </div>
+    <div class="tes-wrap">
+      <div class="tes-track" id="tesTrack">
+
+        <div class="tes-card">
+          <div class="tes-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="tes-text">"Skylink transformed our Sandton home into something from the future. The lighting automation alone paid for itself — and the security integration gives us peace of mind we never had before."</p>
+          <div class="tes-auth">
+            <div class="tes-av">N</div>
+            <div>
+              <div class="tes-an">Nadia van Rensburg</div>
+              <div class="tes-ar">Principal Architect, Johannesburg</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tes-card">
+          <div class="tes-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="tes-text">"We've tried three other systems. Nothing comes close to Skylink's reliability and the quality of the interface. It's the first platform that truly feels premium from end to end."</p>
+          <div class="tes-auth">
+            <div class="tes-av">D</div>
+            <div>
+              <div class="tes-an">Damien Fourie</div>
+              <div class="tes-ar">Property Developer, Cape Town</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tes-card">
+          <div class="tes-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="tes-text">"Managing access for staff, family, and guests used to be a nightmare. Now I do it in ten seconds from my phone. The cloud monitoring caught an anomaly I would never have seen myself."</p>
+          <div class="tes-auth">
+            <div class="tes-av">T</div>
+            <div>
+              <div class="tes-an">Thabo Nkosi</div>
+              <div class="tes-ar">Executive, Umhlanga Estate</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tes-card">
+          <div class="tes-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="tes-text">"The onboarding team was exceptional — thorough, professional, and genuinely invested in getting our setup right. Six months in, the system has been absolutely flawless."</p>
+          <div class="tes-auth">
+            <div class="tes-av">L</div>
+            <div>
+              <div class="tes-an">Lara Hendricks</div>
+              <div class="tes-ar">Interior Designer &amp; Homeowner</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tes-card">
+          <div class="tes-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="tes-text">"I use Skylink across two properties. The experience is identical on both — consistent, fast, and totally under my control. Nothing else on the market competes at this level."</p>
+          <div class="tes-auth">
+            <div class="tes-av">M</div>
+            <div>
+              <div class="tes-an">Marco Bellini</div>
+              <div class="tes-ar">Multi-Property Owner, Pretoria</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="tes-nav" id="tesNav">
+      <button class="tdot act" data-i="0"></button>
+      <button class="tdot" data-i="1"></button>
+      <button class="tdot" data-i="2"></button>
+      <button class="tdot" data-i="3"></button>
+      <button class="tdot" data-i="4"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT CTA STRIP (full contact form lives on contact.html)
+============================================================ -->
+<section class="cta-strip">
+  <div class="wrap">
+    <div class="cta-strip-in">
+      <div class="cta-strip-text rv">
+        <h3>Ready to command<br>your <em>property?</em></h3>
+        <p>Tell us about your home, estate, or industrial site — our team will craft a tailored Skylink solution and respond within 24 hours.</p>
+      </div>
+      <div class="cta-actions rv d1">
+        <a href="contact.html" class="btn-p">Start a Conversation</a>
+        <a href="contact.html" class="btn-g">Visit contact page</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="ft-in">
+      <div>
+        <!-- REPLACE LOGO FILE HERE — footer logo
+             To use a file: src="images/skylink-logo.png"
+        -->
+        <img
+          src="images/skylink-logo.png"
+          alt="Skylink Innovations"
+          class="ft-logo-img"
+        />
+        <div class="ft-tag">Intelligent Living</div>
+        <p class="ft-desc">Cloud-native home automation and security for South Africa's most discerning homeowners. One platform. Total control.</p>
+      </div>
+      <div>
+        <div class="ft-ct">Platform</div>
+        <ul class="ft-links">
+          <li><a href="services.html">Perimeter Security</a></li>
+          <li><a href="services.html">Adaptive Lighting</a></li>
+          <li><a href="services.html">Remote Control</a></li>
+          <li><a href="services.html">Cloud Monitoring</a></li>
+          <li><a href="services.html">Access Management</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">Company</div>
+        <ul class="ft-links">
+          <li><a href="index.html#about">About Skylink</a></li>
+          <li><a href="industrial.html">Industrial Solutions</a></li>
+          <li><a href="drone.html">Drone Security</a></li>
+          <li><a href="index.html#testimonials">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ct">Legal</div>
+        <ul class="ft-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">POPIA Compliance</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <div class="ft-copy">© 2025 Skylink Technologies (Pty) Ltd. All rights reserved.</div>
+      <div class="ft-soc">
+        <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="10" x2="8" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="7.5" r="1" fill="currentColor"/><path d="M12 10v7M12 13c0-1.7 1-3 3-3s3 1.3 3 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        <a href="#" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M4 20L20 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,4 +1,3 @@
-/* Copied from old structure */
   /* ======================================================
      TOKENS
   ====================================================== */
@@ -99,4 +98,735 @@
   ====================================================== */
   #hero{height:100vh;min-height:700px;background:var(--deep);display:flex;align-items:center;overflow:hidden;position:relative}
 
-  /* ...existing code... */
+  /* ── VIDEO BACKGROUND ─────────────────────────────────
+     .h-video    — the <video> element itself
+     .h-grid     — subtle grid overlay (kept at lower opacity over video)
+     .h-rings    — decorative SVG rings (kept, blends with video)
+     .h-ov       — dark gradient overlay: ensures text stays readable
+     On mobile/reduced-motion: video is hidden, fallback bg-color shows.
+  ====================================================== */
+  .h-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        /* fills the hero, never distorts */
+    object-position: center;
+    z-index: 0;               /* behind grid, rings, overlay, content */
+    /* GPU-composited for smooth playback */
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* Grid overlay — reduced opacity so video shows through */
+  .h-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(0,212,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.03) 1px,transparent 1px);background-size:70px 70px;animation:gdrift 30s linear infinite}
+  @keyframes gdrift{to{background-position:70px 70px}}
+
+  /* Rings — z-index 1, partially visible through overlay */
+  .h-rings{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:640px;height:640px;pointer-events:none;z-index:1}
+  .h-rings circle{fill:none;stroke:rgba(0,212,255,.07);animation:pring 4s ease-in-out infinite}
+  .h-rings circle:nth-child(2){animation-delay:.8s;stroke-opacity:.05}
+  .h-rings circle:nth-child(3){animation-delay:1.6s;stroke-opacity:.04}
+  .h-rings circle:nth-child(4){animation-delay:2.4s;stroke-opacity:.025}
+  @keyframes pring{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.03);opacity:.7}}
+
+  /* Overlay: layered gradient for text legibility
+     — deep navy left-to-right so heading area is always readable
+     — base dark layer ensures nothing bleeds through on bright video frames */
+  .h-ov{
+    position:absolute;inset:0;z-index:2;
+    /* OVERLAY OPACITY — adjust the alpha values (last number in each rgba) to control
+       how much the video shows through. Lower = more video visible, Higher = darker.
+       Left gradient: rgba(6,9,16, ALPHA) — .70 is strong-left, .36 is right fade
+       Bottom gradient: .24 top, .12 mid, .40 bottom                              */
+    background:
+      linear-gradient(135deg, rgba(6,9,16,.70) 35%, rgba(6,9,16,.36) 100%),
+      linear-gradient(to bottom, rgba(6,9,16,.24) 0%, rgba(6,9,16,.12) 50%, rgba(6,9,16,.40) 100%);
+  }
+
+  /* Pause video on reduced-motion preference or mobile data-saver */
+  @media (prefers-reduced-motion: reduce) {
+    .h-video { display: none; }
+  }
+  .h-content{position:relative;z-index:3;max-width:780px}
+  .h-eye{font-family:var(--fm);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--cyan);margin-bottom:28px;opacity:0;animation:fsu .8s var(--ease) .3s forwards}
+  .h-hl{font-family:var(--fd);font-size:clamp(52px,7vw,96px);font-weight:300;line-height:1.02;letter-spacing:.03em;margin-bottom:28px;opacity:0;animation:fsu .9s var(--ease) .5s forwards}
+  .h-hl em{font-style:italic;color:var(--cyan)}
+  .h-sub{font-size:17px;font-weight:300;line-height:1.75;color:var(--silv);max-width:520px;margin-bottom:52px;opacity:0;animation:fsu .9s var(--ease) .7s forwards}
+  .h-acts{display:flex;gap:20px;align-items:center;opacity:0;animation:fsu .9s var(--ease) .9s forwards}
+  .btn-p{font-family:var(--fm);font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:16px 40px;background:var(--cyan);color:var(--deep);border:none;border-radius:2px;cursor:pointer;transition:box-shadow .3s,transform .2s;position:relative;overflow:hidden}
+  .btn-p::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);transform:translateX(-100%);transition:transform .4s var(--ease)}
+  .btn-p:hover::before{transform:translateX(0)}
+  .btn-p:hover{box-shadow:0 0 30px rgba(0,212,255,.4);transform:translateY(-1px)}
+  .btn-g{font-family:var(--fm);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--plat);display:flex;align-items:center;gap:10px;transition:color .3s,gap .3s}
+  .btn-g::after{content:'→';transition:transform .3s var(--ease)}
+  .btn-g:hover{color:var(--white);gap:16px}
+  .btn-g:hover::after{transform:translateX(4px)}
+  .h-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fin .8s var(--ease) 1.5s forwards;z-index:3}
+  .h-scroll span{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--silv)}
+  .h-sline{width:1px;height:48px;background:linear-gradient(to bottom,var(--silv),transparent);animation:sb 2s ease-in-out infinite}
+  @keyframes fsu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+  @keyframes fin{from{opacity:0}to{opacity:1}}
+  @keyframes sb{0%,100%{transform:scaleY(1);transform-origin:top}50%{transform:scaleY(.5);transform-origin:top}}
+
+  /* ======================================================
+     ABOUT
+  ====================================================== */
+  #about{background:var(--navy);padding:140px 0}
+  .about-in{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+  .about-vis{position:relative}
+  .about-acc{position:absolute;top:-20px;right:-20px;width:120px;height:120px;border:1px solid rgba(0,212,255,.18);border-radius:2px}
+  .about-card{background:var(--graph);border:1px solid rgba(255,255,255,.05);border-radius:4px;aspect-ratio:4/5;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:36px}
+  .about-ill{position:absolute;inset:0;width:100%;height:100%}
+  .a-stat{position:relative;z-index:2;background:rgba(13,27,42,.88);backdrop-filter:blur(10px);border:1px solid rgba(0,212,255,.14);border-radius:3px;padding:20px 24px}
+  .a-stat-num{font-family:var(--fd);font-size:48px;font-weight:300;color:var(--cyan);line-height:1;margin-bottom:4px}
+  .a-stat-lbl{font-family:var(--fm);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--silv)}
+  .about-text h2{font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.15;letter-spacing:.03em;margin-bottom:28px}
+  .about-text h2 em{font-style:italic;color:var(--gold)}
+  .about-text p{font-size:15px;font-weight:300;line-height:1.85;color:var(--silv);margin-bottom:20px}
+  .a-div{width:56px;height:1px;background:var(--gold);margin:36px 0}
+  .a-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+  .a-sm{border-left:2px solid rgba(0,212,255,.2);padding-left:16px}
+  .a-sm .n{font-family:var(--fd);font-size:28px;font-weight:300;color:var(--white);line-height:1}
+  .a-sm .l{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--silv);margin-top:4px}
+
+  /* ======================================================
+     SERVICES
+  ====================================================== */
+  #services{background:var(--deep);padding:140px 0}
+  .srv-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
+  .srv-head h2{font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.15;letter-spacing:.03em}
+  .srv-head p{font-size:15px;font-weight:300;color:var(--silv);line-height:1.75}
+  .srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+  .srv-card{background:var(--graph);padding:48px 40px;border:1px solid rgba(255,255,255,.04);position:relative;overflow:hidden;transition:background .4s,border-color .4s}
+  .srv-card::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--cyan);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+  .srv-card:hover{background:#1e2534;border-color:rgba(0,212,255,.1)}
+  .srv-card:hover::before{transform:scaleX(1)}
+  .srv-ico{width:48px;height:48px;margin-bottom:32px;transition:transform .3s}
+  .srv-card:hover .srv-ico{transform:translateY(-4px)}
+  .srv-num{font-family:var(--fm);font-size:10px;letter-spacing:.3em;color:var(--cyan);margin-bottom:16px;opacity:.6}
+  .srv-card h3{font-family:var(--fd);font-size:24px;font-weight:400;letter-spacing:.03em;margin-bottom:16px;transition:color .3s}
+  .srv-card:hover h3{color:var(--cyan)}
+  .srv-card p{font-size:14px;font-weight:300;line-height:1.75;color:var(--silv)}
+  .srv-arr{position:absolute;bottom:32px;right:32px;font-size:18px;color:var(--cyan);opacity:0;transform:translate(-8px,8px);transition:opacity .3s,transform .3s var(--ease)}
+  .srv-card:hover .srv-arr{opacity:1;transform:none}
+
+  /* ======================================================
+     PORTFOLIO
+  ====================================================== */
+  #portfolio{background:var(--navy);padding:140px 0}
+  .pf-head{margin-bottom:64px}
+  .pf-head h2{font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;letter-spacing:.03em}
+  .pf-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+  .pf-item{border-radius:3px;overflow:hidden;position:relative;background:var(--graph);border:1px solid rgba(255,255,255,.05);cursor:pointer;transition:transform .5s var(--ease),border-color .4s}
+  .pf-item:hover{transform:translateY(-6px);border-color:rgba(0,212,255,.2)}
+  .pf-item:nth-child(1){grid-column:span 8}
+  .pf-item:nth-child(2){grid-column:span 4}
+  .pf-item:nth-child(3){grid-column:span 4}
+  .pf-item:nth-child(4){grid-column:span 8}
+  .pf-inner{aspect-ratio:16/10;display:flex;align-items:flex-end;padding:32px;position:relative;overflow:hidden}
+  .pf-item:nth-child(2) .pf-inner,.pf-item:nth-child(3) .pf-inner{aspect-ratio:4/5}
+  .pf-bg{position:absolute;inset:0;width:100%;height:100%;transition:transform .6s var(--ease)}
+  .pf-item:hover .pf-bg{transform:scale(1.04)}
+  .pf-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,9,16,.85) 0%,transparent 60%)}
+  .pf-info{position:relative;z-index:2;transform:translateY(8px);transition:transform .3s var(--ease)}
+  .pf-item:hover .pf-info{transform:none}
+  .pf-tag{font-family:var(--fm);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+  .pf-title{font-family:var(--fd);font-size:22px;font-weight:400}
+
+  /* ======================================================
+     TESTIMONIALS
+  ====================================================== */
+  #testimonials{background:var(--deep);padding:140px 0}
+  .tes-head{text-align:center;margin-bottom:80px}
+  .tes-head h2{font-family:var(--fd);font-size:clamp(36px,4vw,52px);font-weight:300;letter-spacing:.03em}
+  .tes-wrap{overflow:hidden;position:relative}
+  .tes-wrap::before,.tes-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+  .tes-wrap::before{left:0;background:linear-gradient(to right,var(--deep),transparent)}
+  .tes-wrap::after{right:0;background:linear-gradient(to left,var(--deep),transparent)}
+  .tes-track{display:flex;gap:28px;transition:transform .6s var(--ease)}
+  .tes-card{flex-shrink:0;width:400px;background:var(--graph);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:44px;position:relative}
+  .tes-card::before{content:'"';position:absolute;top:28px;left:40px;font-family:var(--fd);font-size:80px;line-height:1;color:var(--cyan);opacity:.12}
+  .tes-stars{display:flex;gap:4px;margin-bottom:24px}
+  .tes-stars span{color:var(--gold);font-size:13px}
+  .tes-text{font-family:var(--fd);font-size:18px;font-weight:300;font-style:italic;line-height:1.65;color:var(--plat);margin-bottom:32px}
+  .tes-auth{display:flex;align-items:center;gap:14px}
+  .tes-av{width:44px;height:44px;border-radius:50%;background:var(--navy);border:1px solid rgba(0,212,255,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:18px;color:var(--cyan);flex-shrink:0}
+  .tes-an{font-family:var(--fm);font-size:12px;font-weight:500;color:var(--white);margin-bottom:2px}
+  .tes-ar{font-size:11px;color:var(--silv)}
+  .tes-nav{display:flex;justify-content:center;gap:12px;margin-top:48px}
+  .tdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18);cursor:pointer;border:none;transition:background .3s,width .3s var(--ease);border-radius:4px}
+  .tdot.act{background:var(--cyan);width:24px}
+
+  /* ======================================================
+     CONTACT
+  ====================================================== */
+  #contact{background:var(--navy);padding:140px 0}
+  .con-in{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+  .con-text h2{font-family:var(--fd);font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.1;letter-spacing:.03em;margin-bottom:28px}
+  .con-text h2 em{font-style:italic;color:var(--cyan)}
+  .con-text p{font-size:15px;font-weight:300;color:var(--silv);line-height:1.8;margin-bottom:48px}
+  .con-links{display:flex;flex-direction:column;gap:20px}
+  .con-link{display:flex;align-items:center;gap:16px;font-size:14px;color:var(--silv);transition:color .3s}
+  .con-link:hover{color:var(--white)}
+  .con-ico{width:40px;height:40px;border:1px solid rgba(255,255,255,.1);border-radius:2px;display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s;flex-shrink:0}
+  .con-link:hover .con-ico{border-color:var(--cyan);background:rgba(0,212,255,.08)}
+  .con-form{background:var(--graph);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:56px 48px}
+  .fg{margin-bottom:24px}
+  .fl{display:block;font-family:var(--fm);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--silv);margin-bottom:10px}
+  .fi,.fsel,.fta{width:100%;background:rgba(13,27,42,.6);border:1px solid rgba(255,255,255,.1);border-radius:2px;padding:14px 18px;color:var(--white);font-family:var(--fu);font-size:14px;font-weight:300;outline:none;transition:border-color .3s,background .3s;appearance:none}
+  .fi:focus,.fsel:focus,.fta:focus{border-color:var(--cyan);background:rgba(0,212,255,.04)}
+  .fi::placeholder,.fta::placeholder{color:rgba(143,163,176,.35)}
+  .fta{resize:vertical;min-height:120px}
+  .fsel{cursor:pointer}
+  .fsel option{background:var(--graph)}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .btn-sub{width:100%;padding:16px;background:transparent;border:1px solid var(--cyan);color:var(--cyan);font-family:var(--fm);font-size:12px;letter-spacing:.25em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background .3s,color .3s;margin-top:8px}
+  .btn-sub:hover{background:var(--cyan);color:var(--deep)}
+  .f-ok{display:none;text-align:center;padding:40px;font-family:var(--fd);font-size:24px;font-weight:300;color:var(--cyan)}
+  .f-ok small{display:block;font-family:var(--fm);font-style:normal;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--silv);margin-top:12px}
+
+  /* ======================================================
+     FOOTER
+  ====================================================== */
+  footer{background:var(--deep);border-top:1px solid rgba(255,255,255,.04);padding:80px 0 40px}
+  .ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:64px}
+  .ft-name{font-family:var(--fd);font-size:28px;font-weight:300;letter-spacing:.15em;margin-bottom:16px}
+  .ft-tag{font-family:var(--fm);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--cyan);margin-bottom:20px}
+  .ft-desc{font-size:13px;font-weight:300;line-height:1.75;color:var(--silv);max-width:260px}
+  .ft-ct{font-family:var(--fm);font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:24px}
+  .ft-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .ft-links a{font-size:13px;font-weight:300;color:var(--silv);transition:color .3s}
+  .ft-links a:hover{color:var(--white)}
+  .ft-bot{border-top:1px solid rgba(255,255,255,.04);padding-top:32px;display:flex;align-items:center;justify-content:space-between}
+  .ft-copy{font-size:12px;color:rgba(143,163,176,.45)}
+  .ft-soc{display:flex;gap:16px}
+  .ft-soc a{width:36px;height:36px;border:1px solid rgba(255,255,255,.09);border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--silv);transition:border-color .3s,color .3s,background .3s}
+  .ft-soc a:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,.06)}
+
+  /* ======================================================
+     DRONE SECURITY SECTION
+  ====================================================== */
+  #drone { background: var(--navy); padding: 140px 0; }
+
+  /* Two-column layout: text left, benefits right */
+  .drone-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: start;
+  }
+
+  /* Left — heading + intro + partner credit */
+  .drone-text h2 {
+    font-family: var(--fd);
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: .03em;
+    margin-bottom: 24px;
+  }
+  .drone-text h2 em { font-style: italic; color: var(--cyan); }
+
+  .drone-text p {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--silv);
+    margin-bottom: 20px;
+  }
+
+  /* Gold rule — mirrors the About section divider */
+  .drone-div { width: 56px; height: 1px; background: var(--gold); margin: 36px 0; }
+
+  /* Partner credit pill — clickable, opens rpas.co.za */
+  .drone-partner {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    border: 1px solid rgba(184,150,106,.25);
+    border-radius: 3px;
+    padding: 16px 24px;
+    background: rgba(184,150,106,.04);
+    transition: border-color .3s var(--ease), background .3s var(--ease);
+    text-decoration: none;
+  }
+  .drone-partner:hover {
+    border-color: rgba(184,150,106,.55);
+    background: rgba(184,150,106,.09);
+  }
+
+  /* RPAS Consulting logo image inside partner pill
+     To swap: update src in <!-- REPLACE PARTNER LOGO HERE --> */
+  .drone-partner-logo {
+    height: 48px;     /* adjust to resize the partner logo */
+    width: auto;
+    flex-shrink: 0;
+    object-fit: contain;
+    /* PNG has white/dark content — invert slightly so it reads on dark bg */
+    filter: brightness(0) invert(1) opacity(0.85);
+    transition: opacity .3s;
+  }
+  .drone-partner:hover .drone-partner-logo { opacity: 1; filter: brightness(0) invert(1); }
+
+  .drone-partner-copy {}
+  .drone-partner-sub {
+    font-family: var(--fm);
+    font-size: 9px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* Right — four benefit cards stacked */
+  .drone-benefits { display: flex; flex-direction: column; gap: 2px; }
+
+  .drone-benefit {
+    background: var(--graph);
+    border: 1px solid rgba(255,255,255,.04);
+    padding: 32px 36px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: background .35s, border-color .35s;
+  }
+  /* Cyan left-edge reveal on hover — matches service cards */
+  .drone-benefit::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 2px; height: 100%;
+    background: var(--cyan);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform .4s var(--ease);
+  }
+  .drone-benefit:hover { background: #1e2534; border-color: rgba(0,212,255,.1); }
+  .drone-benefit:hover::before { transform: scaleY(1); }
+
+  .drone-benefit-icon {
+    width: 44px; height: 44px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: transform .3s var(--ease);
+  }
+  .drone-benefit:hover .drone-benefit-icon { transform: translateY(-3px); }
+
+  .drone-benefit-body {}
+  .drone-benefit-title {
+    font-family: var(--fd);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: .03em;
+    color: var(--white);
+    margin-bottom: 8px;
+    transition: color .3s;
+  }
+  .drone-benefit:hover .drone-benefit-title { color: var(--cyan); }
+
+  .drone-benefit-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.72;
+    color: var(--silv);
+  }
+
+  /* ======================================================
+     RESPONSIVE
+  ====================================================== */
+  @media(max-width:1024px){
+    nav{padding:0 32px}
+    .wrap{padding:0 32px}
+    .nav-links,.nav-cta{display:none}
+    .ham{display:flex}
+    .h-rings{display:none}
+    .about-in{grid-template-columns:1fr;gap:60px}
+    .about-vis{max-width:400px}
+    .about-card{aspect-ratio:3/2}
+    .srv-head{grid-template-columns:1fr;gap:24px}
+    .srv-grid{grid-template-columns:1fr 1fr}
+    .pf-item:nth-child(1){grid-column:span 12}
+    .pf-item:nth-child(2),.pf-item:nth-child(3){grid-column:span 6}
+    .pf-item:nth-child(4){grid-column:span 12}
+    .con-in{grid-template-columns:1fr;gap:60px}
+    .ft-in{grid-template-columns:1fr 1fr;gap:40px}
+    .a-stats{grid-template-columns:1fr 1fr 1fr}
+    /* DRONE — stack on tablet */
+    .drone-inner{grid-template-columns:1fr;gap:56px}
+  }
+  @media(max-width:640px){
+    .wrap{padding:0 24px}
+    nav{padding:0 24px}
+    #hero,#about,#services,#portfolio,#drone,#testimonials,#contact{padding:100px 0 80px}
+    #hero{padding-top:0}
+    .h-hl{font-size:42px}
+    .h-acts{flex-direction:column;align-items:flex-start}
+    .srv-grid{grid-template-columns:1fr}
+    .pf-item:nth-child(n){grid-column:span 12}
+    .con-form{padding:36px 28px}
+    .frow{grid-template-columns:1fr}
+    .ft-in{grid-template-columns:1fr}
+    .ft-bot{flex-direction:column;gap:20px;text-align:center}
+    .tes-card{width:300px}
+    .a-stats{grid-template-columns:1fr}
+    .mob-menu a{font-size:28px}
+    /* DRONE — tighter benefit cards on mobile */
+    .drone-benefit{padding:24px 20px;gap:16px}
+  }
+
+  /* ======================================================
+     LOGO IMAGE — nav, loader, footer
+     ─────────────────────────────────────────────────────
+     To swap the logo: find the three src= attributes
+     marked with <!-- REPLACE LOGO FILE HERE --> and
+     update each one with your new image path or data URI.
+     Recommended: PNG with transparent background.
+  ====================================================== */
+  .logo-img {
+    display: block;
+    object-fit: contain;
+    /* Preserves aspect ratio — only set height */
+  }
+  /* Nav header logo */
+  .nav-logo .logo-img {
+    height: 49px;   /* was 44px — increased by 5px per spec */
+    width: auto;
+  }
+  /* Loading screen logo
+     ── ADJUST LOADER LOGO SIZE HERE ──
+     Change the height value below to resize the loader logo.
+     Width scales automatically to preserve proportions.       */
+  .loader-logo-img {
+    height: 288px;  /* 4× original (72px) — adjust freely */
+    width: auto;
+    max-width: 80vw; /* never overflows on narrow screens */
+    display: block;
+    object-fit: contain;
+  }
+  /* Footer logo
+     ── ADJUST FOOTER LOGO SIZE HERE ──
+     Change the height value below to resize the footer logo.
+     Width scales automatically to preserve proportions.       */
+  .ft-logo-img {
+    height: 168px;  /* 3× original (56px) — adjust freely */
+    width: auto;
+    max-width: 100%; /* stays within column on all screens */
+    display: block;
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+  @media(max-width:1024px) {
+    .nav-logo .logo-img  { height: 43px; }
+    .ft-logo-img         { height: 144px; } /* 3× of tablet original (48px) */
+  }
+  @media(max-width:640px) {
+    .nav-logo .logo-img  { height: 37px; }
+    .ft-logo-img         { height: 126px; } /* 3× of mobile original (42px) */
+    .loader-logo-img     { height: 200px; } /* reduced slightly for small screens */
+  }
+  
+
+  /* ======================================================
+     VIDEO SHOWCASE SECTION (portfolio replacement)
+  ====================================================== */
+  #portfolio { background: var(--navy); padding: 140px 0; }
+
+  .vs-head { margin-bottom: 64px; }
+  .vs-head h2 {
+    font-family: var(--fd);
+    font-size: clamp(36px,4vw,52px);
+    font-weight: 300;
+    letter-spacing: .03em;
+    line-height: 1.12;
+  }
+
+  /* 4-column equal grid */
+  .vs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  /* Each card */
+  .vs-card {
+    background: var(--graph);
+    border: 1px solid rgba(255,255,255,.05);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color .4s var(--ease), transform .4s var(--ease);
+  }
+  .vs-card:hover {
+    border-color: rgba(0,212,255,.2);
+    transform: translateY(-5px);
+  }
+
+  /* Cyan bottom line on hover — matches service cards */
+  .vs-card::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: var(--cyan);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .4s var(--ease);
+  }
+  .vs-card:hover::after { transform: scaleX(1); }
+
+  /* 16:9 video wrapper */
+  .vs-video-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--navy);
+    overflow: hidden;
+  }
+  .vs-video-wrap video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Caption area */
+  .vs-caption {
+    padding: 22px 24px 26px;
+  }
+  .vs-title {
+    font-family: var(--fd);
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: .03em;
+    color: var(--white);
+    margin-bottom: 8px;
+    transition: color .3s;
+  }
+  .vs-card:hover .vs-title { color: var(--cyan); }
+
+  .vs-desc {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--silv);
+  }
+
+  /* Responsive */
+  @media(max-width:1024px) { .vs-grid { grid-template-columns: repeat(2,1fr); } }
+  @media(max-width:560px)  { .vs-grid { grid-template-columns: 1fr; } }
+
+  /* ======================================================
+     PAGE HERO (sub-page banners, Services / Drone / Industrial / Contact)
+     Uses the same grid-overlay + cyan eyebrow language as #hero
+     but without the video — keeping a calm, premium feel.
+  ====================================================== */
+  .page-hero{
+    position:relative;
+    background:var(--deep);
+    padding:200px 0 110px;
+    overflow:hidden;
+    border-bottom:1px solid rgba(255,255,255,.04);
+  }
+  .page-hero::before{
+    content:'';
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(0,212,255,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(0,212,255,.04) 1px,transparent 1px);
+    background-size:70px 70px;
+    pointer-events:none;
+    opacity:.7;
+  }
+  .page-hero::after{
+    content:'';
+    position:absolute;inset:0;
+    background:
+      radial-gradient(60% 60% at 80% 30%, rgba(0,212,255,.08) 0%, transparent 60%),
+      linear-gradient(to bottom, rgba(6,9,16,.0) 0%, rgba(6,9,16,.55) 100%);
+    pointer-events:none;
+  }
+  .page-hero .wrap{position:relative;z-index:2;max-width:1160px}
+  .page-hero h1{
+    font-family:var(--fd);
+    font-size:clamp(48px,6vw,84px);
+    font-weight:300;
+    line-height:1.05;
+    letter-spacing:.03em;
+    margin-bottom:28px;
+    max-width:880px;
+  }
+  .page-hero h1 em{font-style:italic;color:var(--cyan)}
+  .page-hero p{
+    font-size:17px;
+    font-weight:300;
+    line-height:1.75;
+    color:var(--silv);
+    max-width:640px;
+  }
+  .page-hero .breadcrumb{
+    font-family:var(--fm);font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--silv);margin-top:28px;
+  }
+  .page-hero .breadcrumb a{color:var(--silv);transition:color .3s}
+  .page-hero .breadcrumb a:hover{color:var(--cyan)}
+  .page-hero .breadcrumb span{color:rgba(143,163,176,.4);margin:0 12px}
+
+  /* ======================================================
+     CTA STRIP (end of sub-pages and on home contact strip)
+  ====================================================== */
+  .cta-strip{
+    background:var(--graph);
+    border-top:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
+    padding:90px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-strip::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg, rgba(0,212,255,.05) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .cta-strip-in{
+    position:relative;z-index:2;
+    display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap;
+  }
+  .cta-strip-text{flex:1;min-width:280px}
+  .cta-strip h3{
+    font-family:var(--fd);
+    font-size:clamp(28px,3.2vw,42px);
+    font-weight:300;
+    letter-spacing:.03em;
+    line-height:1.15;
+    color:var(--white);
+  }
+  .cta-strip h3 em{font-style:italic;color:var(--cyan)}
+  .cta-strip p{
+    font-size:14px;font-weight:300;color:var(--silv);
+    margin-top:12px;max-width:520px;line-height:1.7;
+  }
+  .cta-strip .cta-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+
+  /* ======================================================
+     HOME SUMMARY CTA — "Read More" placement under summary blocks
+  ====================================================== */
+  .sum-cta{
+    margin-top:56px;
+    display:flex;
+    justify-content:flex-start;
+    gap:20px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .sum-head-row{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:40px;
+    margin-bottom:60px;flex-wrap:wrap;
+  }
+  .sum-head-row .sum-head-text{max-width:640px}
+  .sum-head-row .sum-head-link{flex-shrink:0}
+
+  /* ======================================================
+     INDUSTRIAL — use case cards (reuses srv-card visual language)
+  ====================================================== */
+  #industrial{background:var(--deep);padding:140px 0}
+  .ind-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+    margin-top:64px;
+  }
+  .ind-case{
+    background:var(--graph);
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:4px;
+    padding:44px 40px;
+    position:relative;
+    overflow:hidden;
+    transition:border-color .4s,transform .4s var(--ease),background .4s;
+  }
+  .ind-case::before{
+    content:'';position:absolute;top:0;left:0;width:0;height:1px;background:var(--cyan);
+    transition:width .5s var(--ease);
+  }
+  .ind-case:hover{border-color:rgba(0,212,255,.25);transform:translateY(-3px);background:#1F2430}
+  .ind-case:hover::before{width:100%}
+  .ind-num{
+    font-family:var(--fd);font-size:46px;font-weight:300;color:rgba(0,212,255,.18);
+    line-height:1;margin-bottom:16px;
+  }
+  .ind-ico{width:44px;height:44px;margin-bottom:24px;color:var(--cyan)}
+  .ind-case h3{
+    font-family:var(--fd);font-size:24px;font-weight:400;letter-spacing:.02em;
+    margin-bottom:14px;color:var(--white);
+  }
+  .ind-case p{
+    font-size:14px;font-weight:300;line-height:1.75;color:var(--silv);margin-bottom:20px;
+  }
+  .ind-case ul{
+    list-style:none;display:flex;flex-direction:column;gap:8px;
+  }
+  .ind-case li{
+    font-family:var(--fm);font-size:12px;letter-spacing:.04em;color:var(--plat);
+    padding-left:18px;position:relative;
+  }
+  .ind-case li::before{
+    content:'';position:absolute;left:0;top:9px;width:8px;height:1px;background:var(--cyan);
+  }
+
+  /* INDUSTRIAL CAPABILITIES BAND */
+  .ind-caps{
+    margin-top:120px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:32px;
+    padding-top:64px;
+    border-top:1px solid rgba(255,255,255,.06);
+  }
+  .ind-cap{padding-left:18px;border-left:2px solid rgba(0,212,255,.25)}
+  .ind-cap .n{
+    font-family:var(--fd);font-size:32px;font-weight:300;color:var(--white);
+    line-height:1;margin-bottom:6px;
+  }
+  .ind-cap .l{
+    font-family:var(--fm);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--silv);margin-bottom:10px;
+  }
+  .ind-cap .d{font-size:13px;font-weight:300;line-height:1.65;color:var(--plat)}
+
+  /* INDUSTRIAL CROSS-LINK (drone tie-in card) */
+  .ind-tie{
+    margin-top:120px;
+    background:var(--navy);
+    border:1px solid rgba(0,212,255,.18);
+    border-radius:4px;
+    padding:56px;
+    display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap;
+  }
+  .ind-tie-text{flex:1;min-width:280px}
+  .ind-tie-eye{
+    font-family:var(--fm);font-size:10px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--cyan);margin-bottom:14px;
+  }
+  .ind-tie h3{
+    font-family:var(--fd);font-size:clamp(24px,2.6vw,34px);font-weight:300;
+    letter-spacing:.03em;line-height:1.2;margin-bottom:14px;
+  }
+  .ind-tie p{font-size:14px;color:var(--silv);line-height:1.7;font-weight:300}
+
+  /* Responsive */
+  @media (max-width:1024px){
+    .ind-grid{grid-template-columns:1fr;gap:20px}
+    .ind-caps{grid-template-columns:repeat(2,1fr);gap:28px}
+  }
+  @media (max-width:768px){
+    .page-hero{padding:140px 0 80px}
+    .cta-strip{padding:64px 0}
+    .ind-tie{padding:36px}
+    .sum-head-row{margin-bottom:40px}
+  }
+  @media (max-width:560px){
+    .ind-caps{grid-template-columns:1fr}
+    .ind-case{padding:32px 28px}
+  }
